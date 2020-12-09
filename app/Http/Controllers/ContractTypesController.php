@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Entities\ContractTypes;
+use App\Transformers\ContractTypesTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class ContractTypesController extends Controller
 {
@@ -12,21 +15,11 @@ class ContractTypesController extends Controller
     {
         $getData = ContractTypes::all();
 
-        if ($getData) {
-            $output = [
-                'message' => 'success',
-                'result' => $getData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $getData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Collection($getData, new ContractTypesTransformer());
 
-        return response()->json($output, $output['code']);
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function create(Request $request)
@@ -69,21 +62,11 @@ class ContractTypesController extends Controller
         // dd($getId);
         $viewData = ContractTypes::where('id', $getId)->first();
 
-        if ($viewData) {
-            $output = [
-                'message' => 'success',
-                'result' => $viewData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $viewData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Item($viewData, new ContractTypesTransformer());
 
-        return response()->json($output, $output['code']);
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function edit(Request $request, $id)

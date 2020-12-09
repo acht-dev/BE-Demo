@@ -3,193 +3,178 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Opportunities;
+use App\Transformers\OpportunitiesTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
-class OpportunitiesController extends Controller{
+class OpportunitiesController extends Controller
+{
+    public function index()
+    {
+        $allData = Opportunities::all();
+        $resource = new Collection($allData, new OpportunitiesTransformer());
 
-  public function index(){
-    $allData = Opportunities::all();
+        $fractal = app('League\Fractal\Manager');
 
-    if($allData){
-      $output = [
-        "message" => "Get Data All Successfully",
-        "result" => $allData,
-        "code" => 200,
-      ];
-    }else{
-      $output = [
-        "message" => "Failed Retrieve Data",
-        "code" => 404,
-      ];
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
-    return response()->json($output, $output['code']);
-  }
+    public function show($id)
+    {
+        $getData = Opportunities::find($id);
+        $resource = new Item($getData, new OpportunitiesTransformer());
 
-  public function show($id){
-    $getData = Opportunities::find($id);
-    if($getData){
-      $output = [
-        "message" => "Get Data Successfully",
-        "result" => $getData,
-        "code" => 200,
-      ];
-    }else{
-      $output = [
-        "message" => "Failed Retrieve Data",
-        "code" => 404,
-      ];
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
-    return response()->json($output, $output['code']);
-  }
+    public function create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'job_name' => 'required|max:255',
+            'time' => 'required|numeric',
+            'status' => 'required|numeric',
+            'views' => 'required|numeric',
+            'applying' => 'required|numeric',
+            'desc' => 'required',
+            'pos_cat_id' => 'required',
+            'dateOpen' => 'required|date',
+            'dateClose' => 'required|date',
+            'eduId' => 'required',
+            'userId' => 'required',
+            'yearsExp' => 'required',
+            'contract' => 'required',
+            'majorId' => 'required',
+            'locationId' => 'required',
+            'langId' => 'required',
+            'remote' => 'required',
+        ]);
 
-  public function create(Request $request){
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => $validator->errors(),
+            ], 401);
+        }
+        $storeData = Opportunities::create([
+            'job_name' => $request->input('job_name'),
+            'time' => $request->input('time'),
+            'status' => $request->input('status'),
+            'view' => $request->input('views'),
+            'applying' => $request->input('applying'),
+            'job_description' => $request->input('desc'),
+            'position_category_id' => $request->input('pos_cat_id'),
+            'date_open' => $request->input('dateOpen'),
+            'date_close' => $request->input('dateClose'),
+            'education_id' => $request->input('eduId'),
+            'user_id' => $request->input('userId'),
+            'other_skills' => $request->input('other'),
+            'years_experience' => $request->input('yearsExp'),
+            'contract_type_id' => $request->input('contract'),
+            'major_id' => $request->input('majorId'),
+            'location_id' => $request->input('locationId'),
+            'language_id' => $request->input('langId'),
+            'remote' => $request->input('remote'),
+        ]);
 
-    $validator = Validator::make($request->all(), [
-      'job_name' => 'required|max:255',
-      'time' => 'required|numeric',
-      'status' => 'required|numeric',
-      'views' => 'required|numeric',
-      'applying' => 'required|numeric',
-      'desc' => 'required',
-      'pos_cat_id' => 'required',
-      'dateOpen' => 'required|date',
-      'dateClose' => 'required|date',
-      'eduId' => 'required',
-      'userId' => 'required',
-      'yearsExp' => 'required',
-      'contract' => 'required',
-      'majorId' => 'required',
-      'locationId' => 'required',
-      'langId' => 'required',
-      'remote' => 'required',
-    ]);
+        if ($storeData) {
+            $output = [
+                'message' => 'Input Successfully',
+                'code' => 200,
+            ];
+        } else {
+            $output = [
+                'message' => 'Input Failed',
+                'code' => 404,
+            ];
+        }
 
-    if($validator->fails()){
-      return response()->json([
-        'message' => $validator->errors()
-      ], 401);
-    }else{
-      $storeData = Opportunities::create([
-        'job_name'=>$request->input('job_name'),
-        'time'=>$request->input('time'),
-        'status'=>$request->input('status'),
-        'view'=>$request->input('views'),
-        'applying'=>$request->input('applying'),
-        'job_description'=>$request->input('desc'),
-        'position_category_id'=>$request->input('pos_cat_id'),
-        'date_open'=>$request->input('dateOpen'),
-        'date_close'=>$request->input('dateClose'),
-        'education_id'=>$request->input('eduId'),
-        'user_id'=>$request->input('userId'),
-        'other_skills'=>$request->input('other'),
-        'years_experience'=>$request->input('yearsExp'),
-        'contract_type_id'=>$request->input('contract'),
-        'major_id'=>$request->input('majorId'),
-        'location_id'=>$request->input('locationId'),
-        'language_id'=>$request->input('langId'),
-        'remote'=>$request->input('remote'),
-      ]);
-  
-      if($storeData){
-        $output = [
-          "message" => "Input Successfully",
-          "code" => 200,
-        ];
-      }else{
-        $output = [
-          "message" => "Input Failed",
-          "code" => 404,
-        ];
-      }
-  
-      return response()->json($output, $output['code']);
+        return response()->json($output, $output['code']);
     }
-  }
 
-  public function edit(Request $request, $id){
+    public function edit(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'job_name' => 'required|max:255',
+            'time' => 'required|numeric',
+            'status' => 'required|numeric',
+            'view' => 'required|numeric',
+            'applying' => 'required|numeric',
+            'desc' => 'required',
+            'pos_cat_id' => 'required',
+            'dateOpen' => 'required|date',
+            'dateClose' => 'required|date',
+            'eduId' => 'required',
+            'userId' => 'required',
+            'yearsExp' => 'required',
+            'contract' => 'required',
+            'majorId' => 'required',
+            'locationId' => 'required',
+            'langId' => 'required',
+            'remote' => 'required',
+        ]);
 
-    $validator = Validator::make($request->all(), [
-      'job_name' => 'required|max:255',
-      'time' => 'required|numeric',
-      'status' => 'required|numeric',
-      'view' => 'required|numeric',
-      'applying' => 'required|numeric',
-      'desc' => 'required',
-      'pos_cat_id' => 'required',
-      'dateOpen' => 'required|date',
-      'dateClose' => 'required|date',
-      'eduId' => 'required',
-      'userId' => 'required',
-      'yearsExp' => 'required',
-      'contract' => 'required',
-      'majorId' => 'required',
-      'locationId' => 'required',
-      'langId' => 'required',
-      'remote' => 'required'
-    ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => $validator->errors(),
+            ], 401);
+        }
+        $getData = Opportunities::find($id);
 
-    if($validator->fails()){
-      return response()->json([
-        'message' => $validator->errors()
-      ], 401);
-    }else{
-      $getData = Opportunities::find($id);
+        $getData->job_name = $request->input('job_name');
+        $getData->time = $request->input('time');
+        $getData->status = $request->input('status');
+        $getData->applying = $request->input('applying');
+        $getData->view = $request->input('views');
+        $getData->job_description = $request->input('desc');
+        $getData->position_category_id = $request->input('pos_cat_id');
+        $getData->date_open = $request->input('dateOpen');
+        $getData->date_close = $request->input('dateClose');
+        $getData->education_id = $request->input('eduId');
+        $getData->user_id = $request->input('userId');
+        $getData->other_skills = $request->input('other');
+        $getData->years_experience = $request->input('yearsExp');
+        $getData->contract_type_id = $request->input('contract');
+        $getData->major_id = $request->input('majorId');
+        $getData->location_id = $request->input('locationId');
+        $getData->language_id = $request->input('langId');
+        $getData->remote = $request->input('remote');
 
-      $getData->job_name = $request->input('job_name');
-      $getData->time = $request->input('time');
-      $getData->status = $request->input('status');
-      $getData->applying = $request->input('applying');
-      $getData->view = $request->input('views');
-      $getData->job_description = $request->input('desc');
-      $getData->position_category_id = $request->input('pos_cat_id');
-      $getData->date_open = $request->input('dateOpen');
-      $getData->date_close = $request->input('dateClose');
-      $getData->education_id = $request->input('eduId');
-      $getData->user_id = $request->input('userId');
-      $getData->other_skills = $request->input('other');
-      $getData->years_experience = $request->input('yearsExp');
-      $getData->contract_type_id = $request->input('contract');
-      $getData->major_id = $request->input('majorId');
-      $getData->location_id = $request->input('locationId');
-      $getData->language_id = $request->input('langId');
-      $getData->remote = $request->input('remote');
+        $getData->save();
 
-      $getData->save();
+        if ($getData) {
+            $output = [
+                'message' => 'success update data',
+                'code' => 200,
+            ];
+        } else {
+            $output = [
+                'message' => 'Failed update data',
+                'code' => 404,
+            ];
+        }
 
-      if($getData){
-        $output = [
-          "message" => "success update data",
-          "code" => 200,
-        ];
-      }else{
-        $output = [
-          "message" => "Failed update data",
-          "code" => 404,
-        ];
-      }
-      return response()->json($output, $output['code']);
+        return response()->json($output, $output['code']);
     }
-  }
 
-  public function delete($id){
+    public function delete($id)
+    {
+        $hapus = Opportunities::find($id);
+        $hapus->delete();
+        if ($hapus) {
+            $output = [
+                'message' => 'success delete data',
+                'code' => 200,
+            ];
+        } else {
+            $hapus = [
+                'message' => 'Failed delete data',
+                'code' => 404,
+            ];
+        }
 
-    $hapus = Opportunities::find($id);
-    $hapus->delete();
-    if($hapus){
-      $output = [
-        "message" => "success delete data",
-        "code" => 200,
-      ];
-    }else{
-      $hapus = [
-        "message" => "Failed delete data",
-        "code" => 404,
-      ];
+        return response()->json($output, $output['code']);
     }
-    return response()->json($output, $output['code']);
-  }
-
 }

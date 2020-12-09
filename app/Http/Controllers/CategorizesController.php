@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Categorizes;
+use App\Transformers\CategorizesTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class CategorizesController extends Controller
 {
@@ -12,21 +15,10 @@ class CategorizesController extends Controller
     {
         $getData = Categorizes::all();
 
-        if ($getData) {
-            $output = [
-                'message' => 'success',
-                'result' => $getData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $getData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Collection($getData, new CategorizesTransformer());
+        $fractal = app('League\Fractal\Manager');
 
-        return response()->json($output, $output['code']);
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function create(Request $request)
@@ -69,21 +61,10 @@ class CategorizesController extends Controller
         // dd($getId);
         $viewData = Categorizes::where('id', $getId)->first();
 
-        if ($viewData) {
-            $output = [
-                'message' => 'success',
-                'result' => $viewData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $viewData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Item($viewData, new CategorizesTransformer());
+        $fractal = app('League\Fractal\Manager');
 
-        return response()->json($output, $output['code']);
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function edit(Request $request, $id)

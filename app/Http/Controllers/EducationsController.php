@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Educations;
+use App\Transformers\EducationsTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class EducationsController extends Controller
 {
@@ -12,21 +15,11 @@ class EducationsController extends Controller
     {
         $getData = Educations::all();
 
-        if ($getData) {
-            $output = [
-                'message' => 'success',
-                'result' => $getData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $getData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Collection($getData, new EducationsTransformer());
 
-        return response()->json($output, $output['code']);
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function create(Request $request)
@@ -68,21 +61,11 @@ class EducationsController extends Controller
         // dd($getId);
         $viewData = Educations::where('id', $getId)->first();
 
-        if ($viewData) {
-            $output = [
-                'message' => 'success',
-                'result' => $viewData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $viewData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Item($viewData, new EducationsTransformer());
 
-        return response()->json($output, $output['code']);
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function edit(Request $request, $id)

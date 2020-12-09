@@ -7,6 +7,7 @@ use App\Transformers\MajorsTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 // use League\Fractal\Manager;
 
@@ -20,26 +21,6 @@ class MajorsController extends Controller
         $fractal = app('League\Fractal\Manager');
 
         return response()->json($fractal->createData($resource)->toArray());
-        // dd($resource);
-
-        // return $resource;
-        // dd($resource);
-        // return $this->response->collection($getData, new MajorsTransformer());
-        // if ($getData) {
-        //     $output = [
-        //         'message' => 'success',
-        //         'result' => $getData,
-        //         'code' => 200,
-        //     ];
-        // } else {
-        //     $output = [
-        //         'message' => 'Failed',
-        //         'result' => $getData,
-        //         'code' => 404,
-        //     ];
-        // }
-
-        // return response()->json($resource);
     }
 
     public function create(Request $request)
@@ -82,21 +63,11 @@ class MajorsController extends Controller
         // dd($getId);
         $viewData = Majors::where('id', $getId)->first();
 
-        if ($viewData) {
-            $output = [
-                'message' => 'success',
-                'result' => $viewData,
-                'code' => 200,
-            ];
-        } else {
-            $output = [
-                'message' => 'Failed',
-                'result' => $viewData,
-                'code' => 404,
-            ];
-        }
+        $resource = new Item($viewData, new MajorsTransformer());
 
-        return response()->json($output, $output['code']);
+        $fractal = app('League\Fractal\Manager');
+
+        return response()->json($fractal->createData($resource)->toArray());
     }
 
     public function edit(Request $request, $id)
