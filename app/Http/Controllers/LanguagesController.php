@@ -76,7 +76,7 @@ class LanguagesController extends Controller
                 'message' => $validator->errors(),
             ], 401);
         }
-        $input = $request->nama_baru;
+        $input = $request->namaLanguage;
         // dd($input);
         $updateData = Languages::find($id);
         // dd($updateData);

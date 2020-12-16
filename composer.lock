@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7db8a19e1ad3234ecc70ff756b3b6747",
+    "content-hash": "97c17086a3b6715c3325c6560370ad0e",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -72,6 +72,311 @@
                 "source": "https://github.com/defuse/php-encryption/tree/master"
             },
             "time": "2018-07-24T23:27:56+00:00"
+        },
+        {
+            "name": "doctrine/cache",
+            "version": "1.10.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/cache.git",
+                "reference": "13e3381b25847283a91948d04640543941309727"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/13e3381b25847283a91948d04640543941309727",
+                "reference": "13e3381b25847283a91948d04640543941309727",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1 || ^8.0"
+            },
+            "conflict": {
+                "doctrine/common": ">2.2,<2.4"
+            },
+            "require-dev": {
+                "alcaeus/mongo-php-adapter": "^1.1",
+                "doctrine/coding-standard": "^6.0",
+                "mongodb/mongodb": "^1.1",
+                "phpunit/phpunit": "^7.0",
+                "predis/predis": "~1.0"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Cache library is a popular cache implementation that supports many different drivers such as redis, memcache, apc, mongodb and others.",
+            "homepage": "https://www.doctrine-project.org/projects/cache.html",
+            "keywords": [
+                "abstraction",
+                "apcu",
+                "cache",
+                "caching",
+                "couchdb",
+                "memcached",
+                "php",
+                "redis",
+                "xcache"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/cache/issues",
+                "source": "https://github.com/doctrine/cache/tree/1.10.x"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-07T18:54:01+00:00"
+        },
+        {
+            "name": "doctrine/dbal",
+            "version": "2.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/dbal.git",
+                "reference": "adce7a954a1c2f14f85e94aed90c8489af204086"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/adce7a954a1c2f14f85e94aed90c8489af204086",
+                "reference": "adce7a954a1c2f14f85e94aed90c8489af204086",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "^1.0",
+                "doctrine/event-manager": "^1.0",
+                "ext-pdo": "*",
+                "php": "^7.3 || ^8"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^8.1",
+                "jetbrains/phpstorm-stubs": "^2019.1",
+                "phpstan/phpstan": "^0.12.40",
+                "phpunit/phpunit": "^9.4",
+                "psalm/plugin-phpunit": "^0.10.0",
+                "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
+                "vimeo/psalm": "^3.17.2"
+            },
+            "suggest": {
+                "symfony/console": "For helpful console commands such as SQL execution and import of files."
+            },
+            "bin": [
+                "bin/doctrine-dbal"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\DBAL\\": "lib/Doctrine/DBAL"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection and management.",
+            "homepage": "https://www.doctrine-project.org/projects/dbal.html",
+            "keywords": [
+                "abstraction",
+                "database",
+                "db2",
+                "dbal",
+                "mariadb",
+                "mssql",
+                "mysql",
+                "oci8",
+                "oracle",
+                "pdo",
+                "pgsql",
+                "postgresql",
+                "queryobject",
+                "sasql",
+                "sql",
+                "sqlanywhere",
+                "sqlite",
+                "sqlserver",
+                "sqlsrv"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/dbal/issues",
+                "source": "https://github.com/doctrine/dbal/tree/2.12.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdbal",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-11-14T20:26:58+00:00"
+        },
+        {
+            "name": "doctrine/event-manager",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/event-manager.git",
+                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "conflict": {
+                "doctrine/common": "<2.9@dev"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\": "lib/Doctrine/Common"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                }
+            ],
+            "description": "The Doctrine Event Manager is a simple PHP event system that was built to be used with the various Doctrine projects.",
+            "homepage": "https://www.doctrine-project.org/projects/event-manager.html",
+            "keywords": [
+                "event",
+                "event dispatcher",
+                "event manager",
+                "event system",
+                "events"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/event-manager/issues",
+                "source": "https://github.com/doctrine/event-manager/tree/1.1.x"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fevent-manager",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-29T18:28:51+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -314,16 +619,16 @@
         },
         {
             "name": "dusterio/lumen-passport",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dusterio/lumen-passport.git",
-                "reference": "14fcdb45bb7edd8aa9577a2bcd4c90b0d344886d"
+                "reference": "79bd71fd9ab91dc8cb25ec04ff07380de9627a26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dusterio/lumen-passport/zipball/14fcdb45bb7edd8aa9577a2bcd4c90b0d344886d",
-                "reference": "14fcdb45bb7edd8aa9577a2bcd4c90b0d344886d",
+                "url": "https://api.github.com/repos/dusterio/lumen-passport/zipball/79bd71fd9ab91dc8cb25ec04ff07380de9627a26",
+                "reference": "79bd71fd9ab91dc8cb25ec04ff07380de9627a26",
                 "shasum": ""
             },
             "require": {
@@ -367,9 +672,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dusterio/lumen-passport/issues",
-                "source": "https://github.com/dusterio/lumen-passport/tree/0.3.1"
+                "source": "https://github.com/dusterio/lumen-passport/tree/0.3.2"
             },
-            "time": "2020-09-26T02:23:02+00:00"
+            "time": "2020-12-08T01:33:03+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -696,7 +1001,7 @@
         },
         {
             "name": "illuminate/auth",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/auth.git",
@@ -751,7 +1056,7 @@
         },
         {
             "name": "illuminate/broadcasting",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/broadcasting.git",
@@ -806,7 +1111,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -855,7 +1160,7 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
@@ -910,7 +1215,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -958,7 +1263,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -1016,7 +1321,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1064,7 +1369,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1112,7 +1417,7 @@
         },
         {
             "name": "illuminate/cookie",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cookie.git",
@@ -1162,16 +1467,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "8f318e4c636a777682bbb7c91aeed9a105a6683b"
+                "reference": "c3e7c3d2369063d4124fd870356f887c1143d7c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/8f318e4c636a777682bbb7c91aeed9a105a6683b",
-                "reference": "8f318e4c636a777682bbb7c91aeed9a105a6683b",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/c3e7c3d2369063d4124fd870356f887c1143d7c8",
+                "reference": "c3e7c3d2369063d4124fd870356f887c1143d7c8",
                 "shasum": ""
             },
             "require": {
@@ -1223,11 +1528,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-23T01:17:39+00:00"
+            "time": "2020-12-04T14:27:18+00:00"
         },
         {
             "name": "illuminate/encryption",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/encryption.git",
@@ -1278,7 +1583,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -1327,7 +1632,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -1384,7 +1689,7 @@
         },
         {
             "name": "illuminate/hashing",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/hashing.git",
@@ -1432,7 +1737,7 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
@@ -1486,7 +1791,7 @@
         },
         {
             "name": "illuminate/log",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -1535,7 +1840,7 @@
         },
         {
             "name": "illuminate/pagination",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pagination.git",
@@ -1584,7 +1889,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -1633,7 +1938,7 @@
         },
         {
             "name": "illuminate/queue",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/queue.git",
@@ -1697,7 +2002,7 @@
         },
         {
             "name": "illuminate/session",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -1752,7 +2057,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -1817,7 +2122,7 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -1867,16 +2172,16 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
-                "reference": "a7ffe1cb179d589dbb16b7e858f5a499dfa52d36"
+                "reference": "4256ad88d388275343199ace3c868e786f70fdca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/validation/zipball/a7ffe1cb179d589dbb16b7e858f5a499dfa52d36",
-                "reference": "a7ffe1cb179d589dbb16b7e858f5a499dfa52d36",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/4256ad88d388275343199ace3c868e786f70fdca",
+                "reference": "4256ad88d388275343199ace3c868e786f70fdca",
                 "shasum": ""
             },
             "require": {
@@ -1919,11 +2224,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-10-27T15:05:51+00:00"
+            "time": "2020-12-07T14:24:29+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v6.20.5",
+            "version": "v6.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -3546,6 +3851,84 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "3.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/1c51a5fa12131565fe3860705163e53d7a26258a",
+                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/container": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 5.8 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/3.18.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-09T14:08:36+00:00"
         },
         {
             "name": "symfony/console",
@@ -6161,16 +6544,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.13",
+            "version": "7.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "ad0dcd7b184e76f7198a1fe07685bfbec3ae911a"
+                "reference": "bb7c9a210c72e4709cdde67f8b7362f672f2225c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ad0dcd7b184e76f7198a1fe07685bfbec3ae911a",
-                "reference": "ad0dcd7b184e76f7198a1fe07685bfbec3ae911a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/bb7c9a210c72e4709cdde67f8b7362f672f2225c",
+                "reference": "bb7c9a210c72e4709cdde67f8b7362f672f2225c",
                 "shasum": ""
             },
             "require": {
@@ -6179,7 +6562,7 @@
                 "php": ">=7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.1.1",
+                "phpunit/php-token-stream": "^3.1.1 || ^4.0",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^4.2.2",
                 "sebastian/version": "^2.0.1",
@@ -6222,7 +6605,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/7.0.13"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/7.0.14"
             },
             "funding": [
                 {
@@ -6230,7 +6613,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-30T08:35:22+00:00"
+            "time": "2020-12-02T13:39:03+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -6398,29 +6781,29 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.1.2",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "472b687829041c24b25f475e14c2f38a09edf1c2"
+                "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/472b687829041c24b25f475e14c2f38a09edf1c2",
-                "reference": "472b687829041c24b25f475e14c2f38a09edf1c2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/a853a0e183b9db7eed023d7933a858fa1c8d25a3",
+                "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "php": ">=7.1"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -6445,7 +6828,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-token-stream/issues",
-                "source": "https://github.com/sebastianbergmann/php-token-stream/tree/3.1.2"
+                "source": "https://github.com/sebastianbergmann/php-token-stream/tree/master"
             },
             "funding": [
                 {
@@ -6454,20 +6837,20 @@
                 }
             ],
             "abandoned": true,
-            "time": "2020-11-30T08:38:46+00:00"
+            "time": "2020-08-04T08:28:15+00:00"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.12",
+            "version": "8.5.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f40cf5be80a7d177494592ad1b2db3f64ea1dee3"
+                "reference": "8e86be391a58104ef86037ba8a846524528d784e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f40cf5be80a7d177494592ad1b2db3f64ea1dee3",
-                "reference": "f40cf5be80a7d177494592ad1b2db3f64ea1dee3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e86be391a58104ef86037ba8a846524528d784e",
+                "reference": "8e86be391a58104ef86037ba8a846524528d784e",
                 "shasum": ""
             },
             "require": {
@@ -6539,7 +6922,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.12"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.13"
             },
             "funding": [
                 {
@@ -6551,7 +6934,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-30T12:23:30+00:00"
+            "time": "2020-12-01T04:53:52+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

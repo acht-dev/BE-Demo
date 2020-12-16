@@ -1,15 +1,15 @@
 <?php
 
+use App\Entities\Companies;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CompaniesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        // $this->call('UsersTableSeeder');
-        // $this->call(CompaniesSeeder::class);
+        factory(Companies::class, 20)->create();
     }
 }

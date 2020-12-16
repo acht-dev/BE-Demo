@@ -78,7 +78,7 @@ class PositionCategoriesController extends Controller
                 'message' => $validator->errors(),
             ], 401);
         }
-        $input = $request->nama_baru;
+        $input = $request->namaPosisiKategori;
         // dd($input);
         $updateData = PositionCategories::find($id);
         // dd($updateData);

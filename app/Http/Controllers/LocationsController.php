@@ -71,7 +71,7 @@ class LocationsController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $input = $request->nama_baru;
+        $input = $request->namaLokasi;
         // dd($input);
         $updateData = Locations::find($id);
         // dd($updateData);

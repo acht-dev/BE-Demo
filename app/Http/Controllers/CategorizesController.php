@@ -76,7 +76,7 @@ class CategorizesController extends Controller
                 'message' => $validator->errors(),
             ], 401);
         }
-        $input = $request->nama_baru;
+        $input = $request->namaKategori;
         // dd($input);
         $updateData = Categorizes::find($id);
         // dd($updateData);

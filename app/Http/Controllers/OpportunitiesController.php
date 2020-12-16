@@ -34,17 +34,18 @@ class OpportunitiesController extends Controller
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'job_name' => 'required|max:255',
-            'time' => 'required|numeric',
-            'status' => 'required|numeric',
-            'views' => 'required|numeric',
-            'applying' => 'required|numeric',
+            'jobName' => 'required|max:255',
+            // 'time' => 'required|numeric',
+            'status' => 'numeric',
+            'categorizesId' => 'required|numeric',
+            'views' => 'numeric',
+            'applying' => 'numeric',
             'desc' => 'required',
-            'pos_cat_id' => 'required',
-            'dateOpen' => 'required|date',
-            'dateClose' => 'required|date',
-            'eduId' => 'required',
-            'userId' => 'required',
+            'posCatId' => 'required',
+            // 'dateOpen' => 'required|date',
+            // 'dateClose' => 'required|date',
+            // 'eduId' => 'required',
+            // 'userId' => 'required',
             'yearsExp' => 'required',
             'contract' => 'required',
             'majorId' => 'required',
@@ -59,13 +60,14 @@ class OpportunitiesController extends Controller
             ], 401);
         }
         $storeData = Opportunities::create([
-            'job_name' => $request->input('job_name'),
+            'job_name' => $request->input('jobName'),
             'time' => $request->input('time'),
+            'categorizes_id' => $request->input('categorizesId'),
             'status' => $request->input('status'),
             'view' => $request->input('views'),
             'applying' => $request->input('applying'),
             'job_description' => $request->input('desc'),
-            'position_category_id' => $request->input('pos_cat_id'),
+            'position_category_id' => $request->input('posCatId'),
             'date_open' => $request->input('dateOpen'),
             'date_close' => $request->input('dateClose'),
             'education_id' => $request->input('eduId'),
@@ -97,17 +99,18 @@ class OpportunitiesController extends Controller
     public function edit(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'job_name' => 'required|max:255',
-            'time' => 'required|numeric',
-            'status' => 'required|numeric',
-            'view' => 'required|numeric',
-            'applying' => 'required|numeric',
+            'jobName' => 'required|max:255',
+            // 'time' => 'required|numeric',
+            'status' => 'numeric',
+            'categorizesId' => 'required|numeric',
+            'views' => 'numeric',
+            'applying' => 'numeric',
             'desc' => 'required',
-            'pos_cat_id' => 'required',
-            'dateOpen' => 'required|date',
-            'dateClose' => 'required|date',
-            'eduId' => 'required',
-            'userId' => 'required',
+            'posCatId' => 'required',
+            // 'dateOpen' => 'required|date',
+            // 'dateClose' => 'required|date',
+            // 'eduId' => 'required',
+            // 'userId' => 'required',
             'yearsExp' => 'required',
             'contract' => 'required',
             'majorId' => 'required',
@@ -123,17 +126,17 @@ class OpportunitiesController extends Controller
         }
         $getData = Opportunities::find($id);
 
-        $getData->job_name = $request->input('job_name');
-        $getData->time = $request->input('time');
-        $getData->status = $request->input('status');
-        $getData->applying = $request->input('applying');
-        $getData->view = $request->input('views');
+        $getData->job_name = $request->input('jobName');
+        // $getData->time = $request->input('time');
+        // $getData->status = $request->input('status');
+        // $getData->applying = $request->input('applying');
+        // $getData->view = $request->input('views');
         $getData->job_description = $request->input('desc');
-        $getData->position_category_id = $request->input('pos_cat_id');
-        $getData->date_open = $request->input('dateOpen');
-        $getData->date_close = $request->input('dateClose');
+        $getData->position_category_id = $request->input('posCatId');
+        // $getData->date_open = $request->input('dateOpen');
+        // $getData->date_close = $request->input('dateClose');
         $getData->education_id = $request->input('eduId');
-        $getData->user_id = $request->input('userId');
+        // $getData->user_id = $request->input('userId');
         $getData->other_skills = $request->input('other');
         $getData->years_experience = $request->input('yearsExp');
         $getData->contract_type_id = $request->input('contract');

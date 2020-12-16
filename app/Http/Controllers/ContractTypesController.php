@@ -78,7 +78,7 @@ class ContractTypesController extends Controller
                 'message' => $validator->errors(),
             ], 401);
         }
-        $input = $request->nama_baru;
+        $input = $request->namaKontrak;
         // dd($input);
         $updateData = ContractTypes::find($id);
         // dd($updateData);

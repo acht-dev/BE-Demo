@@ -8,15 +8,14 @@ class OpportunitiesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('opportunities', function(Blueprint $table) {
+        Schema::create('opportunities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('job_name');
             $table->integer('time');
+            $table->integer('categorizes_id');
             $table->tinyInteger('status');
             $table->integer('view');
             $table->integer('applying');
@@ -41,8 +40,6 @@ class OpportunitiesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

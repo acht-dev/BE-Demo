@@ -77,6 +77,8 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
+    'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
 ]);
 
 /*
@@ -93,10 +95,16 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\FormRequestServiceProvider::class);
+$app->register(App\Providers\RepositoryServiceProvider::class);
 
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
+
+$app->configure('permission');
+$app->alias('cache', \Illuminate\Cache\CacheManager::class);  // if you don't have this already
+$app->register(Spatie\Permission\PermissionServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

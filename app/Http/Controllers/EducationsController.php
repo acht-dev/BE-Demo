@@ -76,7 +76,7 @@ class EducationsController extends Controller
                 'message' => $validator->errors(),
             ], 401);
         }
-        $input = $request->nama_baru;
+        $input = $request->namaEdukasi;
         // dd($input);
         $updateData = Educations::find($id);
         // dd($updateData);
