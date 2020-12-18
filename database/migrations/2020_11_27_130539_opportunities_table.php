@@ -14,18 +14,18 @@ class OpportunitiesTable extends Migration
         Schema::create('opportunities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('job_name');
-            $table->integer('time');
+            $table->integer('time')->default(0);
             $table->integer('categorizes_id');
-            $table->tinyInteger('status');
-            $table->integer('view');
-            $table->integer('applying');
+            $table->tinyInteger('status')->default(0);
+            $table->integer('view')->default(0);
+            $table->integer('applying')->default(0);
             $table->text('job_description');
             $table->integer('position_category_id');
             $table->dateTimeTz('date_open')->nullable();
             $table->dateTimeTz('date_close')->nullable();
             $table->integer('education_id');
             $table->integer('user_id');
-            $table->text('other_skills');
+            $table->text('other_skills')->nullable();
             $table->integer('years_experience');
             $table->integer('contract_type_id');
             $table->integer('major_id');

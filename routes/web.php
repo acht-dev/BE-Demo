@@ -35,23 +35,31 @@ $router->group(['middleware' => 'auth:api'], function () use ($router) {
     $router->delete('/hapusData/{id}', 'MenusController@delete');
 
     //routing categorizes
+    // $router->group(['middleware' => 'CheckRole:admin'], function () use ($router) {
     $router->post('/categorizes', 'CategorizesController@create');
+    $router->get('/categorizes', 'CategorizesController@index');
+    $router->get('/categorizes/{id}', 'CategorizesController@show');
     $router->put('/categorizes/{id}', 'CategorizesController@edit');
     $router->delete('/categorizes/{id}', 'CategorizesController@delete');
+    // });
 
     //routing Contract Types
     $router->post('/contract-type', 'ContractTypesController@create');
+    $router->get('/contract-type', 'ContractTypesController@index');
+    $router->get('/contract-type/{id}', 'ContractTypesController@show');
     $router->put('/contract-type/{id}', 'ContractTypesController@edit');
     $router->delete('/contract-type/{id}', 'ContractTypesController@delete');
 
     //routing Educations
-
+    $router->get('/educations', 'EducationsController@index');
+    $router->get('/educations/{id}', 'EducationsController@show');
     $router->post('/educations', 'EducationsController@create');
     $router->put('/educations/{id}', 'EducationsController@edit');
     $router->delete('/educations/{id}', 'EducationsController@delete');
 
     //routing Language
-
+    $router->get('/languages', 'LanguagesController@index');
+    $router->get('/languages/{id}', 'LanguagesController@show');
     $router->post('/languages', 'LanguagesController@create');
     $router->put('/languages/{id}', 'LanguagesController@edit');
     $router->delete('/languages/{id}', 'LanguagesController@delete');
@@ -59,23 +67,37 @@ $router->group(['middleware' => 'auth:api'], function () use ($router) {
     //routing Location
 
     $router->post('/location', 'LocationsController@create');
+    $router->get('/location', 'LocationsController@index');
+    $router->get('/location/{id}', 'LocationsController@show');
     $router->put('/location/{id}', 'LocationsController@edit');
     $router->delete('/location/{id}', 'LocationsController@delete');
 
     //routing Major
     $router->post('/major', 'MajorsController@create');
+    $router->get('/major', 'MajorsController@index');
+    $router->get('/major/{id}', 'MajorsController@show');
     $router->put('/major/{id}', 'MajorsController@edit');
     $router->delete('/major/{id}', 'MajorsController@delete');
 
     //routing Position
 
     $router->post('/position-category', 'PositionCategoriesController@create');
+    $router->get('/position-category', 'PositionCategoriesController@index');
+    $router->get('/position-category/{id}', 'PositionCategoriesController@show');
     $router->put('/position-category/{id}', 'PositionCategoriesController@edit');
     $router->delete('/position-category/{id}', 'PositionCategoriesController@delete');
 
+    $router->get('/opportunity', 'OpportunitiesController@index');
+    $router->get('/opportunity/{id}', 'OpportunitiesController@show');
     $router->post('/opportunity', 'OpportunitiesController@create');
     $router->put('/opportunity/{id}', 'OpportunitiesController@edit');
     $router->delete('/opportunity/{id}', 'OpportunitiesController@delete');
+
+    $router->post('/companies', 'CompaniesController@store');
+    $router->get('/companies', 'CompaniesController@index');
+    $router->get('/companies/{id}', 'CompaniesController@show');
+    $router->put('/companies/{id}', 'CompaniesController@update');
+    $router->delete('/companies/{id}', 'CompaniesController@destroy');
 });
 
 //routing Users
@@ -85,32 +107,14 @@ $router->group(['middleware' => 'auth:api'], function () use ($router) {
 // $router->put('/users/{id}', 'UsersController@edit');
 // $router->delete('/users/{id}', 'UsersController@delete');
 //routing opportunities
-$router->get('/opportunity', 'OpportunitiesController@index');
-$router->get('/opportunity/{id}', 'OpportunitiesController@show');
 
-$router->get('/major', 'MajorsController@index');
-$router->get('/major/{id}', 'MajorsController@show');
-
-$router->get('/languages', 'LanguagesController@index');
-$router->get('/languages/{id}', 'LanguagesController@show');
-
-$router->get('/categorizes', 'CategorizesController@index');
-$router->get('/categorizes/{id}', 'CategorizesController@show');
-
-$router->get('/contract-type', 'ContractTypesController@index');
-$router->get('/contract-type/{id}', 'ContractTypesController@show');
-
-$router->get('/educations', 'EducationsController@index');
-$router->get('/educations/{id}', 'EducationsController@show');
-
-$router->get('/location', 'LocationsController@index');
-$router->get('/location/{id}', 'LocationsController@show');
-
-$router->get('/position-category', 'PositionCategoriesController@index');
-$router->get('/position-category/{id}', 'PositionCategoriesController@show');
-
-$router->post('/companies', 'CompaniesController@store');
-$router->get('/companies', 'CompaniesController@index');
-$router->get('/companies/{id}', 'CompaniesController@show');
-$router->put('/companies/{id}', 'CompaniesController@update');
-$router->delete('/companies/{id}', 'CompaniesController@destroy');
+// $router->get('/categorizes', 'CategorizesController@index');
+// $router->get('/categorizes/{id}', 'CategorizesController@show');
+// $router->group(['middleware' => 'CheckRole:user'], function () use ($router) {
+    //     $router->get('/categorizes', 'CategorizesController@index');
+    //     $router->get('/categorizes/{id}', 'CategorizesController@show');
+    //     $router->get('/major', 'MajorsController@index');
+    //     $router->post('/categorizes', 'CategorizesController@create');
+    //     $router->put('/categorizes/{id}', 'CategorizesController@edit');
+    //     $router->delete('/categorizes/{id}', 'CategorizesController@delete');
+    // });

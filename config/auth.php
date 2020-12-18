@@ -1,19 +1,20 @@
 <?php
+
 return [
     'defaults' => [
         'guard' => 'api',
         'passwords' => 'users',
     ],
-'guards' => [
+    'guards' => [
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
-'providers' => [
+    'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => \App\Entities\Users::class,
-        ]
-    ]
+        ],
+    ],
 ];
